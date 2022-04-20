@@ -6,6 +6,7 @@ type Teacher struct {
 	Name   string `json:"name"`
 	Gender int64  `json:"gender"`
 	Mobile string `json:"mobile"`
+	Courses []string `json:"courses"`
 }
 
 type RegisterReq struct {

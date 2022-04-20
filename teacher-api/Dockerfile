@@ -13,8 +13,8 @@ ADD go.mod .
 ADD go.sum .
 RUN go mod download
 COPY . .
-COPY teacher-api/etc /app/etc
-RUN go build -ldflags="-s -w" -o /app/teacher teacher-api/teacher.go
+COPY /etc /app/etc
+RUN go build -ldflags="-s -w" -o /app/teacher teacher.go
 
 
 FROM scratch

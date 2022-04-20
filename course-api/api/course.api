@@ -1,0 +1,31 @@
+// api语法版本
+syntax = "v1"
+
+info(
+	author: "赵封钦"
+	date:   "2020-03-08"
+	desc:   "课程信息api"
+)
+
+type Course {
+	Id         int64  `json:"id"`
+	CourseName string `json:"CouerseName"`
+	Teacher    string `json:"teacher"`
+	BeginAt    string `json:"beginAt"`
+	EndAt      string `json:"endAt"`
+}
+
+type (
+	CourseInfoReq {
+		CourseId int64 `json:"courseId"`
+	}
+	CourseInfoResp {
+		CourseInfo Course `json:"courseInfo"`
+	}
+)
+
+service course-api{
+	@doc "获取课程信息"
+	@handler courseInfo
+	post /course/info (CourseInfoReq) returns (CourseInfoResp)
+}

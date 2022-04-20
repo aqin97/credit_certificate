@@ -1,0 +1,54 @@
+// api语法版本
+syntax = "v1"
+
+info(
+	author: "赵封钦"
+	date:   "2020-03-08"
+	desc:   "学生信息api"
+)
+
+type Student {
+	Id     int64  `json:"id"`
+	Name   string `json:"name"`
+	Gender int64  `json:"gender"`
+	Mobile string `json:"mobile"`
+}
+
+type (
+	RegisterReq {
+		Mobile   string `json:"mobile"`
+		Password string `json:"password"`
+	}
+	RegisterResp {
+		AccessToken  string `json:"accessToken"`
+		AccessExpire int64  `json:"accessExpire"`
+		RefreshAfter int64  `json:"refreshAfter"`
+	}
+)
+
+type (
+	LoginReq {
+		Mobile   string `json:"mobile"`
+		Password string `json:"password"`
+	}
+	LoginResp {
+		AccessToken  string `json:"accessToken"`
+		AccessExpire int64  `json:"accessExpire"`
+		RefreshAfter int64  `json:"refreshAfter"`
+	}
+)
+
+type (
+	StudentInfoReq {
+		StudentId int64 `json:"studentId"`
+	}
+	StudentInfoResp {
+		StudentInfo Student `json:"studentInfo"`
+	}
+)
+
+service student-api{
+	@doc "获取学生信息"
+	@handler studentInfo
+	post /student/info (StudentInfoReq) returns (StudentInfoResp)
+}

@@ -31,6 +31,6 @@ message GetCourseInfoResp {
 }
 
 //service
-service usercenter {
+service coursecenter {
   rpc GetCourseInfo(GetCourseInfoReq) returns(GetCourseInfoResp);
 }

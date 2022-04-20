@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+
+//model
+message Teacher {
+  int64 id = 1;
+  string name = 2;
+  int64 gender=3;
+  string moblie = 4;
+  string courses = 5;
+}
+/*
+type Teacher {
+	Id     int64  `json:"id"`
+	Name   string `json:"name"`
+	Gender int64  `json:"gender"`
+	Mobile string `json:"mobile"`
+    Courses []string `json:"course"`
+}
+*/
+message GetTeacherInfoReq {
+  int64  id = 1;
+}
+message GetTeacherInfoResp {
+    Teacher teacher = 1;
+}
+
+//service
+service teachercenter {
+  rpc GetTeacherInfo(GetTeacherInfoReq) returns(GetTeacherInfoResp);
+}

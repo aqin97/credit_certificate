@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+
+//model
+message Course {
+  int64 id = 1;
+  string courseName = 2;
+  string teacher=3;
+  string beginAt = 4;
+  string endAt = 5;
+}
+/*
+type Course {
+	Id         int64  `json:"id"`
+	CourseName string `json:"CouerseName"`
+	Teacher    string `json:"teacher"`
+	BeginAt    string `json:"beginAt"`
+	EndAt      string `json:"endAt"`
+}
+*/
+
+message GetCourseInfoReq {
+  int64  id = 1;
+}
+message GetCourseInfoResp {
+   Course course = 1;
+}
+
+//service
+service usercenter {
+  rpc GetCourseInfo(GetCourseInfoReq) returns(GetCourseInfoResp);
+}

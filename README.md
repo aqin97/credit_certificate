@@ -14,4 +14,4 @@ goctl docker -go student.go
 goctl kube deploy -name course-api -namespace credit-certifitate -image course-api:v1.0 -o course-api.yaml -port 1001
 
 生成rpc代码
-goctl rpc
+goctl rpc protoc *.proto --go_out=../ --go-grpc_out=../ --zrpc_out=../

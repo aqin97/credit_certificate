@@ -13,8 +13,8 @@ ADD go.mod .
 ADD go.sum .
 RUN go mod download
 COPY . .
-COPY course-api/etc /app/etc
-RUN go build -ldflags="-s -w" -o /app/course course-api/course.go
+COPY /etc /app/etc
+RUN go build -ldflags="-s -w" -o /app/course course.go
 
 
 FROM scratch
